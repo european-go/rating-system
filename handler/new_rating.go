@@ -31,6 +31,10 @@ func RouteNewRating(w http.ResponseWriter, r *http.Request) {
 
 	var ratingInput RatingInput
 
+	if r.Body == nil {
+		http.Error(w, "body is empty", http.StatusBadRequest)
+		return
+	}
 	err := json.NewDecoder(r.Body).Decode(&ratingInput)
 	if err != nil {
 		http.Error(w, "invalid json", http.StatusBadRequest)
@@ -52,6 +56,11 @@ func RouteNewRating(w http.ResponseWriter, r *http.Request) {
 	if len(missingFields) > 0 {
 		errMsg := fmt.Sprintf("missing field(s):\n%s", strings.Join(missingFields, ", "))
 		http.Error(w, errMsg, http.StatusBadRequest)
+		return
+	}
+
+	if *ratingInput.Result < 0.0 || *ratingInput.Result > 1.0 {
+		http.Error(w, "result must be between 0.0 and 1.0", http.StatusBadRequest)
 		return
 	}
 

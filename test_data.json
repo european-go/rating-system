@@ -1,0 +1,32 @@
+[
+    {
+        "input": {
+            "player_rating": 2073.715,
+            "opponent_rating": 2056.795,
+            "result": 1.0
+        },
+        "output": {
+            "new_rating": 2082.956611835606,
+            "gor_change": 9.241611835605909,
+            "expected_result": 0.5239626638039919,
+            "con": 18.20112668552559,
+            "bonus": 0.577195972462174,
+            "beta": -49.782211869432146
+        }
+    },
+    {
+        "input": {
+            "player_rating": 2073.715,
+            "opponent_rating": 2056.795,
+            "result": 1.0
+        },
+        "output": {
+            "new_rating": 2082.956611835606,
+            "gor_change": 9.241611835605909,
+            "expected_result": 0.5239626638039919,
+            "con": 18.20112668552559,
+            "bonus": 0.577195972462174,
+            "beta": -49.782211869432146
+        }
+    }
+]
