@@ -2,7 +2,9 @@
 
 This is repository contains a Rest API with and endpoint to calculate the [EGF Rating System](https://europeangodatabase.eu/EGD/EGF_rating_system.php).
 
-## Routes
+## Endpoints
+
+API Endpoints are expose on port `9000`.
 
 ### `new_route`
 
