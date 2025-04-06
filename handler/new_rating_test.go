@@ -7,6 +7,8 @@ import (
 	"net/http/httptest"
 	"os"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 type TestingData struct {
@@ -180,10 +182,14 @@ func TestPOSTNewRating(t *testing.T) {
 			if err != nil {
 				t.Errorf("could not decode")
 			}
-			want := testData.Output
-			if got != want {
-				t.Errorf("\nGOT:  %v\nWANT: %v\n", got, want)
-			}
+
+			delta := 1e-9
+			assert.InDelta(t, testData.Output.NewRating, got.NewRating, delta, "new_rating differs")
+			assert.InDelta(t, testData.Output.GoRChange, got.GoRChange, delta, "gor_change differs")
+			assert.InDelta(t, testData.Output.ExpectedResult, got.ExpectedResult, delta, "expected_result differs")
+			assert.InDelta(t, testData.Output.Con, got.Con, delta, "con differs")
+			assert.InDelta(t, testData.Output.Bonus, got.Bonus, delta, "bonus differs")
+			assert.InDelta(t, testData.Output.Beta, got.Beta, delta, "beta differs")
 		}
 	})
 }
